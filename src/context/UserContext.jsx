@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {auth} from '../config/firebase'
+import { auth, Provider } from '../config/firebase'
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   createUserWithEmailAndPassword,
+  signInWithPopup
 } from "firebase/auth";
 
 const UserContext = createContext({});
@@ -28,6 +29,16 @@ export const AuthContextProvider = ({ children }) => {
       console.log(err.message);
     }
   };
+
+  const userWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, Provider);
+      navigate('/');
+      
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -62,7 +73,8 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <UserContext.Provider value={{ 
       handleRegisterUser, handleSignout, handleLogin,
-      user, setEmail, setPassword  
+      user, setEmail, setPassword,
+      userWithGoogle
     }}>
       {children}
     </UserContext.Provider>

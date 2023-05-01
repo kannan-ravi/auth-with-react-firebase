@@ -113,10 +113,48 @@ a {
   cursor: pointer;
 }
 
+.or-text {
+  font-weight: var(--fw-300);
+  margin-top: 20px;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+
+  width: 100%;
+  max-width: 300px;
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 12px 0;
+  font-family: var(--ff-montserrat);
+}
+
+.google-button img {
+  max-width: 15px;
+  height: auto;
+  object-fit: cover;
+}
+
+.google-button p {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--secondary-blue);
+  font-weight: var(--fw-600);
+}
+
 .bottom-text {
   font-size: 12px;
   margin-top: 10px;
-  float: right;
+  text-align: right;
+  width: 100%;
+  max-width: 300px;
+
 }
 
 /* <==== HOME =====> */

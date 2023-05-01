@@ -1,7 +1,7 @@
-import UserImage from "../assets/user-image.png";
+import userimage from "../assets/user-image.png";
 import usericon from "../assets/user-icon.png";
 import lockicon from "../assets/lock-icon.png";
-
+import googleicon from '../assets/google-icon.png';
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -9,13 +9,11 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../context/UserContext";
 
 const Login = () => {
-  const { handleLogin, setEmail, setPassword } = UserAuth();
-
-  
+  const { handleLogin, setEmail, setPassword, userWithGoogle } = UserAuth();
 
   return (
     <section className="auth-container">
-      <img src={UserImage} alt="User Image" className="user-image" />
+      <img src={userimage} alt="User Image" className="user-image" />
 
       <form className="auth-form" onSubmit={handleLogin}>
         <div className="auth-email">
@@ -46,11 +44,17 @@ const Login = () => {
         <button type="submit" className="auth-button">
           LOGIN
         </button>
-
-        <p className="bottom-text">
-          New User? <Link to="/register">Register</Link>
-        </p>
       </form>
+
+      <p className="or-text">OR</p>
+      <button onClick={userWithGoogle} className="google-button">
+        <img src={googleicon} alt="Google Icon" />
+        <p>Continue with Google</p>
+      </button>
+
+      <p className="bottom-text">
+        New User? <Link to="/register">Register</Link>
+      </p>
     </section>
   );
 };
